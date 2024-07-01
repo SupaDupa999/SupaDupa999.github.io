@@ -1,0 +1,227 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ColorPalette</title>
+
+<!-- This is the basic style, giving the default background color, font size, and font color of the web page -->
+<style>
+body{@charset "utf-8";   background-color:#99BFA4;  font-size:normal;  color:black;}
+</style>
+
+<!-- This is style for fonts -->
+<style>
+.fs{font-size:small;}                                              /* small font size */
+.fR{color:#FF0000;}  .fRB{color:#FF0000; font-weight:bold;}        /* font color red, normal and bold */
+.fB{color:#6060A0;}  .fBB{color:#6060A0; font-weight:bold;}        /* font color blue (greyish), normal and bold, normal blus is used for links */
+.fM{color:#800000;}  .fMB{color:#800000; font-weight:bold;}        /* font color maroon, normal and bold */
+.fN{color:#000080;}  .fNB{color:#000080; font-weight:bold;}        /* font color navy, normal and bold  */
+.fG{color:#008000;}  .fGB{color:#008000; font-weight:bold;}        /* font color green (dark), normal and bold  */
+</style>
+
+<!-- This is style for any containers -->
+<style>
+.cnb { border: 1px solid black; padding: 2px; }                                                         /* normal size with border  */
+.cc {background-color:#E0E0E0; color:#000000;  padding:5px; font-size:18px;}                            /* commonly used large font no border */
+.ccb {background-color:#E0E0E0; color:#000000;  padding:5px; border:1px solid black; font-size:18px;}   /* commonly used large font with border */
+
+</style>
+
+<style>
+table.nb {  border-collapse: collapse;   margin:5px;  }                                         /* table with normal fonts and border  */
+table.st{font-size:small;}   table.stb{font-size:small;border-collapse: collapse; margin:5px;}  /* table with small fonts +/- border  */
+table.stb td,table.stb th,table.nb td,table.nb th { border: 2px solid black; padding: 2px; }    /* table elements with small fonts + border  */
+</style>
+
+<!--  special style used for making collapsible panels (boxes)  -->
+<style>
+.frme, .frme700, .frme650, .frme600, .frme500 {background-color : #E0E0E0;width:100%;} 
+.frme600{height:600px;}.frme700{height:700px;}.frme650{height:700px;}.frme500{height:500px;} 
+.rim { border-bottom: 1px solid #611800;} 
+.vtabOff{font-size:small;color : #E0E0E0;border-top : 1px solid #611800;border-left : 1px solid #611800;border-bottom : 1px solid #611800;background-color : #611800;} 
+.tabContent{background-color:#E0E0E0; color:#000000;  padding:5px; border:1px solid black; font-size:18px;} 
+.tabCollapse{color:#f0f0f0;  background-color:#611800; font-size:18px;} 
+</style> 
+
+<script>
+<!--
+// switch display on/off when link clicked
+function expandDiv(curobj,which){
+   trig=document.getElementById(which).style.display;
+   if(trig=="block"){trig="none";} 
+      else if(trig=="" || trig=="none"){trig="block";}
+   document.getElementById(which).style.display=trig;
+}
+
+// Test if the box called id exists 
+function DivExists(id){
+   if(!!document.getElementById(id)) return 1;
+   return 0;
+}
+// Change the display of a box
+function ChangeShow(cStart, cFinish, nStart, nFinish, displayType){
+   for(i=cStart.charCodeAt(0); i<= cFinish.charCodeAt(0);i++){
+       c = String.fromCharCode(i);
+       for(j=nStart; j<=nFinish;j++){
+          id = `${c}${j}`;
+          if(DivExists(id)==1) document.getElementById(id).style.display = displayType;
+       }
+    }
+}
+//  Show and hide boxes 
+function DoShow(cStart, cFinish, nStart, nFinish){ChangeShow(cStart, cFinish, nStart, nFinish, "block");}
+function DoHide(cStart, cFinish, nStart, nFinish){ChangeShow(cStart, cFinish, nStart, nFinish, "none");}
+-->
+// see C:/xampp/htdocs/MyAMP/Local/DevTools/TabPanels/MakeTabPage.html (link from home.html)
+</script>
+
+<script>
+<!--
+
+function StrToAr(str)
+{
+   return str.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } ); 
+}
+function StrToMx(str)
+{
+   var lines = str.split("\n");
+   var mx = [];
+   var j = 0;
+   for(i=0;i<lines.length;i++)
+   {
+      var ar = StrToAr(lines[i]);
+      if(ar.length>0)mx.push(ar);
+   }
+   return mx;
+}
+
+function DoCol()
+{
+   var mx = StrToMx(document.getElementById("s1").value);
+   var resStr = "<b>Color String Interconversions</b><table class=\"nb\">" +
+                "<tr><th>Original</th><th>Decimal</th><th>Hex</th><th>Color</th></tr>";
+   document.getElementById("res").innerHTML = resStr;
+   for(var i=0;i<mx.length;i++)
+   {
+      var ar = mx[i];
+      if(ar.length<3)
+      {  
+         var h = ar[0];
+         var r = parseInt(h.substring(0,2), 16);
+         var g = parseInt(h.substring(2,4), 16);
+         var b = parseInt(h.substring(4,6), 16);
+      }
+      else
+      {
+          var r = ar[0];
+          var g = ar[1];
+          var b = ar[2];
+      }
+      var dStr = `rgb(${r}, ${g}, ${b})`;
+      var rh = (r*1).toString(16);
+      if(rh.length<2) rh = `0 ${rh}`;
+      var gh = (g*1).toString(16);
+      if(gh.length<2) gh = `0${gh}`;
+      var bh = (b*1).toString(16);
+      if(bh.length<2) bh = `0${bh}`;
+      var hStr = `#${rh}${gh}${bh}`;	
+      var cBlock = "<span style=\"background-color:" + hStr + 
+                "\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+      resStr += `<tr><td>${r} ${g} ${b}</td><td>${dStr}</td><td>${hStr}</td><td>${cBlock}</td></tr>`;
+   } 	
+   resStr += "</table>";
+   document.getElementById("res").innerHTML = resStr;
+}
+function ExampleCol()
+{
+   document.getElementById("s1").value = "A265B6\n123 92 210";
+   DoCol();
+}
+
+-->
+</script>
+
+</head>
+<body>
+<h2 align="center">ColorPalette.html</h2>
+
+<div align="center"><table><tr><td align="left" class="tabContent">
+
+<p>Click on colored tab to show or hide contents<br />
+<input type="button" value="ShowAll"  onclick="DoShow('a','z',0,35)">
+<input type="button" value="HideAll"  onclick="DoHide('a','z',0,35)"></p>
+
+
+
+
+<span  class="tabCollapse" title="click me" onclick="expandDiv(this,'b0')">Make Color Code Program</span>
+<div   class="tabContent" id="b0" style="display:block">
+<table><tr><td valign="top">
+<b>Data</b><br />
+<textarea rows="5" id="s1" cols="20"></textarea>
+</td><td valign="top">
+<p><b>Make Color Using Numbers</b> For each row (color)
+<br />&nbsp;&nbsp;- enter 3 numbers (0-255) separated by spaces, 
+<br />&nbsp;&nbsp;- or enter 6 chr hex code (0-9,a-f)
+<br />
+    <input type="button" value="Example" onClick="ExampleCol()">
+    <input type="button" value="Make Color" onClick="DoCol()">
+</td></tr></table>
+<div id="res"></div>
+</div>
+
+<span  class="tabCollapse" title="click me" onclick="expandDiv(this,'r1')">Plain Colors</span>
+<div   class="tabContent" id="r1" style="display:block">
+<table class="stb">
+<tr><td ><span style="background-color:#000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 0 0 #000000</td><td ><span style="background-color:#00003f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 0 63 #00003f</td><td ><span style="background-color:#00007f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 0 127 #00007f</td><td ><span style="background-color:#0000bf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 0 191 #0000bf</td><td ><span style="background-color:#0000ff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 0 255 #0000ff</td></tr>
+<tr><td ><span style="background-color:#003f00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 63 0 #003f00</td><td ><span style="background-color:#003f3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 63 63 #003f3f</td><td ><span style="background-color:#003f7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 63 127 #003f7f</td><td ><span style="background-color:#003fbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 63 191 #003fbf</td><td ><span style="background-color:#003fff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 63 255 #003fff</td></tr>
+<tr><td ><span style="background-color:#007f00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 127 0 #007f00</td><td ><span style="background-color:#007f3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 127 63 #007f3f</td><td ><span style="background-color:#007f7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 127 127 #007f7f</td><td ><span style="background-color:#007fbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 127 191 #007fbf</td><td ><span style="background-color:#007fff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 127 255 #007fff</td></tr>
+<tr><td ><span style="background-color:#00bf00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 191 0 #00bf00</td><td ><span style="background-color:#00bf3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 191 63 #00bf3f</td><td ><span style="background-color:#00bf7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 191 127 #00bf7f</td><td ><span style="background-color:#00bfbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 191 191 #00bfbf</td><td ><span style="background-color:#00bfff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 191 255 #00bfff</td></tr>
+<tr><td ><span style="background-color:#00ff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 255 0 #00ff00</td><td ><span style="background-color:#00ff3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 255 63 #00ff3f</td><td ><span style="background-color:#00ff7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 255 127 #00ff7f</td><td ><span style="background-color:#00ffbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 255 191 #00ffbf</td><td ><span style="background-color:#00ffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 0 255 255 #00ffff</td></tr>
+<tr><td ><span style="background-color:#3f0000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 0 0 #3f0000</td><td ><span style="background-color:#3f003f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 0 63 #3f003f</td><td ><span style="background-color:#3f007f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 0 127 #3f007f</td><td ><span style="background-color:#3f00bf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 0 191 #3f00bf</td><td ><span style="background-color:#3f00ff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 0 255 #3f00ff</td></tr>
+<tr><td ><span style="background-color:#3f3f00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 63 0 #3f3f00</td><td ><span style="background-color:#3f3f3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 63 63 #3f3f3f</td><td ><span style="background-color:#3f3f7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 63 127 #3f3f7f</td><td ><span style="background-color:#3f3fbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 63 191 #3f3fbf</td><td ><span style="background-color:#3f3fff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 63 255 #3f3fff</td></tr>
+<tr><td ><span style="background-color:#3f7f00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 127 0 #3f7f00</td><td ><span style="background-color:#3f7f3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 127 63 #3f7f3f</td><td ><span style="background-color:#3f7f7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 127 127 #3f7f7f</td><td ><span style="background-color:#3f7fbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 127 191 #3f7fbf</td><td ><span style="background-color:#3f7fff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 127 255 #3f7fff</td></tr>
+<tr><td ><span style="background-color:#3fbf00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 191 0 #3fbf00</td><td ><span style="background-color:#3fbf3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 191 63 #3fbf3f</td><td ><span style="background-color:#3fbf7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 191 127 #3fbf7f</td><td ><span style="background-color:#3fbfbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 191 191 #3fbfbf</td><td ><span style="background-color:#3fbfff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 191 255 #3fbfff</td></tr>
+<tr><td ><span style="background-color:#3fff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 255 0 #3fff00</td><td ><span style="background-color:#3fff3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 255 63 #3fff3f</td><td ><span style="background-color:#3fff7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 255 127 #3fff7f</td><td ><span style="background-color:#3fffbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 255 191 #3fffbf</td><td ><span style="background-color:#3fffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 63 255 255 #3fffff</td></tr>
+<tr><td ><span style="background-color:#7f0000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 0 0 #7f0000</td><td ><span style="background-color:#7f003f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 0 63 #7f003f</td><td ><span style="background-color:#7f007f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 0 127 #7f007f</td><td ><span style="background-color:#7f00bf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 0 191 #7f00bf</td><td ><span style="background-color:#7f00ff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 0 255 #7f00ff</td></tr>
+<tr><td ><span style="background-color:#7f3f00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 63 0 #7f3f00</td><td ><span style="background-color:#7f3f3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 63 63 #7f3f3f</td><td ><span style="background-color:#7f3f7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 63 127 #7f3f7f</td><td ><span style="background-color:#7f3fbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 63 191 #7f3fbf</td><td ><span style="background-color:#7f3fff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 63 255 #7f3fff</td></tr>
+<tr><td ><span style="background-color:#7f7f00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 127 0 #7f7f00</td><td ><span style="background-color:#7f7f3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 127 63 #7f7f3f</td><td ><span style="background-color:#7f7f7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 127 127 #7f7f7f</td><td ><span style="background-color:#7f7fbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 127 191 #7f7fbf</td><td ><span style="background-color:#7f7fff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 127 255 #7f7fff</td></tr>
+<tr><td ><span style="background-color:#7fbf00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 191 0 #7fbf00</td><td ><span style="background-color:#7fbf3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 191 63 #7fbf3f</td><td ><span style="background-color:#7fbf7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 191 127 #7fbf7f</td><td ><span style="background-color:#7fbfbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 191 191 #7fbfbf</td><td ><span style="background-color:#7fbfff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 191 255 #7fbfff</td></tr>
+<tr><td ><span style="background-color:#7fff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 255 0 #7fff00</td><td ><span style="background-color:#7fff3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 255 63 #7fff3f</td><td ><span style="background-color:#7fff7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 255 127 #7fff7f</td><td ><span style="background-color:#7fffbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 255 191 #7fffbf</td><td ><span style="background-color:#7fffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 127 255 255 #7fffff</td></tr>
+<tr><td ><span style="background-color:#bf0000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 0 0 #bf0000</td><td ><span style="background-color:#bf003f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 0 63 #bf003f</td><td ><span style="background-color:#bf007f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 0 127 #bf007f</td><td ><span style="background-color:#bf00bf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 0 191 #bf00bf</td><td ><span style="background-color:#bf00ff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 0 255 #bf00ff</td></tr>
+<tr><td ><span style="background-color:#bf3f00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 63 0 #bf3f00</td><td ><span style="background-color:#bf3f3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 63 63 #bf3f3f</td><td ><span style="background-color:#bf3f7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 63 127 #bf3f7f</td><td ><span style="background-color:#bf3fbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 63 191 #bf3fbf</td><td ><span style="background-color:#bf3fff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 63 255 #bf3fff</td></tr>
+<tr><td ><span style="background-color:#bf7f00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 127 0 #bf7f00</td><td ><span style="background-color:#bf7f3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 127 63 #bf7f3f</td><td ><span style="background-color:#bf7f7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 127 127 #bf7f7f</td><td ><span style="background-color:#bf7fbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 127 191 #bf7fbf</td><td ><span style="background-color:#bf7fff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 127 255 #bf7fff</td></tr>
+<tr><td ><span style="background-color:#bfbf00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 191 0 #bfbf00</td><td ><span style="background-color:#bfbf3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 191 63 #bfbf3f</td><td ><span style="background-color:#bfbf7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 191 127 #bfbf7f</td><td ><span style="background-color:#bfbfbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 191 191 #bfbfbf</td><td ><span style="background-color:#bfbfff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 191 255 #bfbfff</td></tr>
+<tr><td ><span style="background-color:#bfff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 255 0 #bfff00</td><td ><span style="background-color:#bfff3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 255 63 #bfff3f</td><td ><span style="background-color:#bfff7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 255 127 #bfff7f</td><td ><span style="background-color:#bfffbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 255 191 #bfffbf</td><td ><span style="background-color:#bfffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 255 255 #bfffff</td></tr>
+<tr><td ><span style="background-color:#ff0000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 0 0 #ff0000</td><td ><span style="background-color:#ff003f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 0 63 #ff003f</td><td ><span style="background-color:#ff007f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 0 127 #ff007f</td><td ><span style="background-color:#ff00bf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 0 191 #ff00bf</td><td ><span style="background-color:#ff00ff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 0 255 #ff00ff</td></tr>
+<tr><td ><span style="background-color:#ff3f00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 63 0 #ff3f00</td><td ><span style="background-color:#ff3f3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 63 63 #ff3f3f</td><td ><span style="background-color:#ff3f7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 63 127 #ff3f7f</td><td ><span style="background-color:#ff3fbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 63 191 #ff3fbf</td><td ><span style="background-color:#ff3fff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 63 255 #ff3fff</td></tr>
+<tr><td ><span style="background-color:#ff7f00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 127 0 #ff7f00</td><td ><span style="background-color:#ff7f3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 127 63 #ff7f3f</td><td ><span style="background-color:#ff7f7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 127 127 #ff7f7f</td><td ><span style="background-color:#ff7fbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 127 191 #ff7fbf</td><td ><span style="background-color:#ff7fff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 127 255 #ff7fff</td></tr>
+<tr><td ><span style="background-color:#ffbf00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 191 0 #ffbf00</td><td ><span style="background-color:#ffbf3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 191 63 #ffbf3f</td><td ><span style="background-color:#ffbf7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 191 127 #ffbf7f</td><td ><span style="background-color:#ffbfbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 191 191 #ffbfbf</td><td ><span style="background-color:#ffbfff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 191 255 #ffbfff</td></tr>
+<tr><td ><span style="background-color:#ffff00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 255 0 #ffff00</td><td ><span style="background-color:#ffff3f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 255 63 #ffff3f</td><td ><span style="background-color:#ffff7f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 255 127 #ffff7f</td><td ><span style="background-color:#ffffbf;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 255 191 #ffffbf</td><td ><span style="background-color:#ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 255 255 #ffffff</td></tr>
+</table>
+</div><br />
+
+<span  class="tabCollapse" title="click me" onclick="expandDiv(this,'r2')">Color Palletes</span>
+<div   class="tabContent" id="r2" style="display:block">
+<b>Table of colors used on this page</b>
+<table class="stb">
+<tr><td ><span style="background-color:#ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 255 255 #ffffff</td><td ><span style="background-color:#e0e0e0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 224 224 224 #e0e0e0</td><td ><span style="background-color:#808080;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 128 128 128 #808080</td><td ><span style="background-color:#800000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 128 0 0 #800000</td><td ><span style="background-color:#ff0000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 0 0 #ff0000</td></tr>
+<tr><td ><span style="background-color:#603060;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 96 48 96 #603060</td><td ><span style="background-color:#301040;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 48 16 64 #301040</td><td ><span style="background-color:#6060a0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 96 96 160 #6060a0</td><td ><span style="background-color:#a0a060;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 160 160 96 #a0a060</td><td ><span style="background-color:#a0a000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 160 160 0 #a0a000</td></tr>
+<tr><td ><span style="background-color:#99bfa4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 153 191 164 #99bfa4</td><td ><span style="background-color:#a0a060;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 160 160 96 #a0a060</td><td ><span style="background-color:#611800;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 97 24 0 #611800</td><td ><span style="background-color:#cc3fc8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 204 63 200 #cc3fc8</td><td ><span style="background-color:#e0e0e0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 224 224 224 #e0e0e0</td></tr>
+</table>
+<b>Patterns of complementary colors</b>
+<table class="stb">
+<tr><td >A</td><td ><span style="background-color:#695d46;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 105 93 70 #695d46</td><td ><span style="background-color:#ff712c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 113 44 #ff712c</td><td ><span style="background-color:#cfc291;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 207 194 145 #cfc291</td><td ><span style="background-color:#a1e8d9;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 161 232 217 #a1e8d9</td><td ><span style="background-color:#fff6c5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 246 197 #fff6c5</td></tr>
+<tr><td >B</td><td ><span style="background-color:#730046;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 115 0 70 #730046</td><td ><span style="background-color:#c93c00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 201 60 0 #c93c00</td><td ><span style="background-color:#e88801;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 232 136 1 #e88801</td><td ><span style="background-color:#ffc200;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 194 0 #ffc200</td><td ><span style="background-color:#bfbb11;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 187 17 #bfbb11</td></tr>
+<tr><td >C</td><td ><span style="background-color:#611800;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 97 24 0 #611800</td><td ><span style="background-color:#8c7327;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 140 115 39 #8c7327</td><td ><span style="background-color:#47a429;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 71 164 41 #47a429</td><td ><span style="background-color:#99bfa4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 153 191 164 #99bfa4</td><td ><span style="background-color:#f2efbd;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 242 239 189 #f2efbd</td></tr>
+<tr><td >D</td><td ><span style="background-color:#14576e;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 20 87 110 #14576e</td><td ><span style="background-color:#8c215a;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 140 33 90 #8c215a</td><td ><span style="background-color:#e68526;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 230 133 38 #e68526</td><td ><span style="background-color:#c366a3;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 195 102 163 #c366a3</td><td ><span style="background-color:#f2cff2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 242 207 242 #f2cff2</td></tr>
+<tr><td >E</td><td ><span style="background-color:#400101;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 64 1 1 #400101</td><td ><span style="background-color:#307367;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 48 115 103 #307367</td><td ><span style="background-color:#60a685;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 96 166 133 #60a685</td><td ><span style="background-color:#f2ec91;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 242 236 145 #f2ec91</td><td ><span style="background-color:#e5f9ba;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 229 249 186 #e5f9ba</td></tr>
+<tr><td >F</td><td ><span style="background-color:#375915;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 55 89 21 #375915</td><td ><span style="background-color:#a63c3c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 166 60 60 #a63c3c</td><td ><span style="background-color:#736c49;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 115 108 73 #736c49</td><td ><span style="background-color:#a69d81;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 166 157 129 #a69d81</td><td ><span style="background-color:#f2e0c9;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 242 224 201 #f2e0c9</td></tr>
+<tr><td >G</td><td ><span style="background-color:#73245e;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 115 36 94 #73245e</td><td ><span style="background-color:#a64521;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 166 69 33 #a64521</td><td ><span style="background-color:#d9b64e;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 217 182 78 #d9b64e</td><td ><span style="background-color:#f2da91;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 242 218 145 #f2da91</td><td ><span style="background-color:#f2f2f2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 242 242 242 #f2f2f2</td></tr>
+<tr><td >H</td><td ><span style="background-color:#ff4d00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 77 0 #ff4d00</td><td ><span style="background-color:#665747;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 102 87 71 #665747</td><td ><span style="background-color:#7db300;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 125 179 0 #7db300</td><td ><span style="background-color:#998a7a;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 153 138 122 #998a7a</td><td ><span style="background-color:#d9c362;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 217 195 98 #d9c362</td></tr>
+<tr><td >I</td><td ><span style="background-color:#800026;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 128 0 38 #800026</td><td ><span style="background-color:#808053;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 128 128 83 #808053</td><td ><span style="background-color:#5c997a;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 92 153 122 #5c997a</td><td ><span style="background-color:#a3cc8f;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 163 204 143 #a3cc8f</td><td ><span style="background-color:#ffe699;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 230 153 #ffe699</td></tr>
+</table>
+</div><br />
+</div><br />
+
+

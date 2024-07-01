@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SupaDupaHome</title>
+<!-- Tab
+<style>body {background-color:#99BFA4;} .rim { border-bottom: 1px solid #611800;} .tabOff{float : left; margin-right : 1px;padding : 0px 2px 0px 2px;color : #E0E0E0; border-top : 1px solid #611800; border-left : 1px solid #611800; border-right : 1px solid #611800; background-color : #611800;} .tabOn {float : left; margin-left : 1px; margin-right : 2px; padding : 0px 2px 0px 2px; background-color : #E0E0E0; border-top : 1px solid #611800; border-left : 1px solid #611800; border-right : 1px solid #611800; color : #611800;} .tabPanel{ background-color : #E0E0E0; color:#000000; padding : 5px;} </style>
+-->
+
+<style> @charset "utf-8";.fs{font-size:small;}.fR{color:#FF0000;}.fB{color:#6060A0;}.fM{color:#800000;}.fN{color:#000080;}.fRB{color:#FF0000; font-weight:bold;}.fBB{color:#6060A0; font-weight:bold;}.fMB{color:#800000; font-weight:bold;}.fNB{color:#000080; font-weight:bold;} table.st,table.stb { font-size:small;} table.stb,table.nb {  border-collapse: collapse;   margin:5px;  }table.stb td,table.stb th,table.nb td,table.nb th { border: 2px solid black; padding: 2px; }.nb { border: 1px solid black; padding: 2px; } table.sxt,table.sxtb { font-size:x-small;} table.sxtb {  border-collapse: collapse;   margin:5px;  }table.sxtb td,table.sxtb th { border: 1px solid black; padding: 2px; }tr.b {font-weight: bold;}tr.b td{font-weight: bold;}tr.rb{font-weight: bold; color:#FF0000;}tr.rb td{font-weight: bold; color:#FF0000;} body{background-color:#99BFA4;} .frme, .frme700, .frme650, .frme600, .frme500{background-color : #E0E0E0;width:100%;} .frme600{height:600px;}.frme700{height:700px;}.frme650{height:700px;}.frme500{height:500px;} .rim { border-bottom: 1px solid #611800;} .vtabOff{font-size:small;color : #E0E0E0;border-top : 1px solid #611800;border-left : 1px solid #611800;border-bottom : 1px solid #611800;background-color : #611800;} .tabContent{background-color:#E0E0E0; color:#000000;  padding:5px; border:1px solid black; font-size:18px;} .tabCollapse{color:#f0f0f0;  background-color:#611800; font-size:18px;} </style> 
+
+<script>
+<!--
+function expandDiv(curobj,which){trig=document.getElementById(which).style.display;if(trig=="block"){trig="none";}else if(trig=="" || trig=="none"){trig="block";}  document.getElementById(which).style.display=trig;}
+function DivExists(id){if(!!document.getElementById(id)) return 1;  return 0;}
+function ChangeShow(cStart, cFinish, nStart, nFinish, displayType){for(i=cStart.charCodeAt(0); i<= cFinish.charCodeAt(0);i++){     c = String.fromCharCode(i);for(j=nStart; j<=nFinish;j++){id = `${c}${j}`;if(DivExists(id)==1) document.getElementById(id).style.display = displayType;}}}
+function DoShow(cStart, cFinish, nStart, nFinish){ChangeShow(cStart, cFinish, nStart, nFinish, "block");}
+function DoHide(cStart, cFinish, nStart, nFinish){ChangeShow(cStart, cFinish, nStart, nFinish, "none");}
+-->
+// see C:/xampp/htdocs/MyAMP/Local/DevTools/TabPanels/MakeTabPage.html (link from home.html)
+</script>
+
+
+</head>
+<body>
+<h2 align="center">SupaDupa Home Page</h2>
+
+<div align="center"><table><tr><td align="left" class="tabContent">
+<p>Click on colored tab to show or hide contents<br />
+<input type="button" value="ShowAll"  onclick="DoShow('a','z',0,35)">
+<input type="button" value="HideAll"  onclick="DoHide('a','z',0,35)"></p>
+
+<span  class="tabCollapse" title="click me" onclick="expandDiv(this,'a0')">SupaDupa Project</span>
+<div   class="tabContent" id="a0" style="display:block">
+
+  <span  class="tabCollapse" title="click me" onclick="expandDiv(this,'a1')">SupaDupa999 for Harvey</span>
+  <div   class="tabContent" id="a1" style="display:block">
+  <a href="https://amchang.net/MyGithub/SupaDupa/Resources/SupaDupa999Passwords.pdf">SupaDupa999 Password</a> Encrypted. To open, same password as email<br />
+  <a href="https://github.com/SupaDupa999/">https://github.com/SupaDupa999/</a> SupaDupa999 on github<br />
+
+  </div><br />
+
+  <span  class="tabCollapse" title="click me" onclick="expandDiv(this,'a2')">Resources</span>
+  <div   class="tabContent" id="a2" style="display:block">
+  <a href="https://amchang.net/MyGithub/SupaDupa/Manual/SupaDupaIndex.html">SupaDupa Manual</a>
+
+  </div><br />
+
+</div><br />
+
+
+<span  class="tabCollapse" title="click me" onclick="expandDiv(this,'b0')">Github</span>
+<div   class="tabContent" id="b0" style="display:block">
+<a href="https://github.com">https://github.com</a> Github on www
+</div><br />
+
+
+<span  class="tabCollapse" title="click me" onclick="expandDiv(this,'c0')">Web Pages</span>
+<div   class="tabContent" id="c0" style="display:block">
+
+</div><br />
+
+</td></tr></table></div>
+</body>
+</html>
