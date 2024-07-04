@@ -154,6 +154,58 @@ function ExampleCol()
 
 
 
+<span  class="tabCollapse" title="click me" onclick="expandDiv(this,'a0')">Help</span>
+<div   class="tabContent" id="a0" style="display:block">
+
+  <span  class="tabCollapse" title="click me" onclick="expandDiv(this,'a1')">Color format</span>
+  <div   class="tabContent" id="a1" style="display:block">
+  Integer numbers in html can be represented as
+  <br />Decimal numbers (dec), 0 to 9
+  <br />Hexadecimal (hex) 0 to 9 then a to f (representing 10 to 15) 
+  <br />example: hex of 10 is 16+0 in dec
+
+  <p>A byte is the basic numerical unit in computing
+  <br />a byte has a value of 0 to 255 in dec, and #00 to #ff in hex  (# means what follows is a hex and not decimal number)
+  
+  <p>Color in html is represented by 3 bytes, r for red, g for green, and b for blue
+  <br />In html color is represented by 3 numbers, each 0-255.  These are red, blue, green and transparency
+  <br />The format is either rgb(r,g,b) or in hex code #rrggbb
+
+  <p>More recently, a 4th number (alpha) for transparency can be added
+  <br />for decimal it is a number between 0 and 1.  0 is transparent, 1 is solid
+  <br />for hex it is 00 to ff, 00 is transparent and ff is solid
+  <br />for example
+  <br /><span <span style="color:rgb(255,0,0,1);"><b>rgb(255,0,0,1)</b></span> <span <span style="color:rgb(255,0,0,0.5);"><b>rgb(255,0,0,0.5)</b></span>
+  <br /><span <span style="color:#ff0000ff;"><b>#ff0000ff;</b></span> <span <span style="color:#ff000066;"><b>#ff000066;</b></span> 
+
+  <p>An alternative hex format 3 (rgb) or 4(rgba) numbers where each is between 0 (minimum) and f (maximum)
+
+  <p>For the rest of this page, all color code used are in the rgb format.
+  <br />The programmer can choose to add alpha when it is appropriate
+  </div><br />
+
+  <span  class="tabCollapse" title="click me" onclick="expandDiv(this,'a2')">Color Palatte</span>
+  <div   class="tabContent" id="a2" style="display:block">
+  A color palatte is a set of complementary colors
+  <br />This means that the colors in the set look good when they are shown next to each other
+  <br />Usually a palatte consists of 5 colors
+
+  <p>When designing a web page therefore, 
+  <br />the colors used (other than in imported images) should be from the same palatte
+
+  <p>This page presents some plain colors and some palattes that I have collected
+
+  <p>For more palattes, the following links are the sources Google suggested 
+  <ul> 
+  <a href="https://coolors.co/">https://coolors.co/</a>
+  <br /><a href="https://colorhunt.co/">https://colorhunt.co/</a>
+  <br /><a href="https://colorpalettes.net/">https://colorpalettes.net/</a>
+  <br /><a href="https://www.canva.com/colors/color-palettes/">https://www.canva.com/colors/color-palettes/</a>
+  </ul>
+</div><br />
+
+</div><br />
+
 <span  class="tabCollapse" title="click me" onclick="expandDiv(this,'b0')">Make Color Code Program</span>
 <div   class="tabContent" id="b0" style="display:block">
 <table><tr><td valign="top">
@@ -201,15 +253,15 @@ function ExampleCol()
 </table>
 </div><br />
 
-<span  class="tabCollapse" title="click me" onclick="expandDiv(this,'r2')">Color Palletes</span>
+<span  class="tabCollapse" title="click me" onclick="expandDiv(this,'r2')">Sample Color Pallates</span>
 <div   class="tabContent" id="r2" style="display:block">
-<b>Table of colors used on this page</b>
+<b>Color palattes used on this website</b>
 <table class="stb">
 <tr><td ><span style="background-color:#ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 255 255 #ffffff</td><td ><span style="background-color:#e0e0e0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 224 224 224 #e0e0e0</td><td ><span style="background-color:#808080;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 128 128 128 #808080</td><td ><span style="background-color:#800000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 128 0 0 #800000</td><td ><span style="background-color:#ff0000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 0 0 #ff0000</td></tr>
 <tr><td ><span style="background-color:#603060;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 96 48 96 #603060</td><td ><span style="background-color:#301040;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 48 16 64 #301040</td><td ><span style="background-color:#6060a0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 96 96 160 #6060a0</td><td ><span style="background-color:#a0a060;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 160 160 96 #a0a060</td><td ><span style="background-color:#a0a000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 160 160 0 #a0a000</td></tr>
 <tr><td ><span style="background-color:#99bfa4;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 153 191 164 #99bfa4</td><td ><span style="background-color:#a0a060;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 160 160 96 #a0a060</td><td ><span style="background-color:#611800;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 97 24 0 #611800</td><td ><span style="background-color:#cc3fc8;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 204 63 200 #cc3fc8</td><td ><span style="background-color:#e0e0e0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 224 224 224 #e0e0e0</td></tr>
 </table>
-<b>Patterns of complementary colors</b>
+<b>Color palattes I have found and used in the past</b>
 <table class="stb">
 <tr><td >A</td><td ><span style="background-color:#695d46;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 105 93 70 #695d46</td><td ><span style="background-color:#ff712c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 113 44 #ff712c</td><td ><span style="background-color:#cfc291;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 207 194 145 #cfc291</td><td ><span style="background-color:#a1e8d9;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 161 232 217 #a1e8d9</td><td ><span style="background-color:#fff6c5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 246 197 #fff6c5</td></tr>
 <tr><td >B</td><td ><span style="background-color:#730046;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 115 0 70 #730046</td><td ><span style="background-color:#c93c00;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 201 60 0 #c93c00</td><td ><span style="background-color:#e88801;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 232 136 1 #e88801</td><td ><span style="background-color:#ffc200;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 255 194 0 #ffc200</td><td ><span style="background-color:#bfbb11;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 191 187 17 #bfbb11</td></tr>
