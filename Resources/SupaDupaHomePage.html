@@ -62,6 +62,7 @@ function ChangeShow(onAr){DoHide(); for(i=0;i<onAr.length;i++) ChangeShowEach(on
 function ShowLogin(){onAr = ["a0","a1"];ChangeShow(onAr);}
 function ShowFileProc(){onAr = ["a0","a3","a31","a32","a33","a34","a35","a36","a37"];ChangeShow(onAr);}
 function ShowRepositories(){onAr = ["a0","a2","a21","a22"];ChangeShow(onAr);}
+function ShowSiteStructure(){onAr = ["b0"];ChangeShow(onAr);}
 -->
 </script>
 
@@ -78,6 +79,7 @@ Click on buttons to show selected contents<br />
 <br />
 <input type="button" value="Show Login/Logout"  onclick="ShowLogin()">
 <input type="button" value="Show File Procedures"  onclick="ShowFileProc()">
+<input type="button" value="Show Site Structure"  onclick="ShowSiteStructure()">
 <input type="button" value="Show Repositories"  onclick="ShowRepositories()">
 
 </td>
@@ -241,7 +243,7 @@ Click on buttons to show selected contents<br />
     <li>Click on the <b>+ button</b>, then click on <b>Upload a file</b>
     <li>Search file on the <b>File Search panel</b> that appears
     <li>Mark the file then click <b>Open</b>
-    <li>When file loaded, click <b>Save</b> or <b>Commit Change</b>
+    <li>When file loaded, click <b>Commit Change</b>
     </ol>
     </div><br />
 
@@ -317,6 +319,7 @@ Click on buttons to show selected contents<br />
     <li>Click on the account icon <span class="fB">Top right corner of page</span>
     <li>Scroll to bottom of the drop down list
     <li>Click <b>Delete File</b>
+    <li>Click <b>Commit Changes</b> (twice in different places on page)
     </ol> 
     <span class="fR"><b>Note: </b>a deleted file, along with its editing history, cannot be recovered</span>
     </div><br />
@@ -366,6 +369,25 @@ Click on buttons to show selected contents<br />
   </ul>
 </div><br />
 
+
+
+
+
+<span  class="tabCollapse" title="click me" onclick="expandDiv(this,'c0')">Help</span>
+<div   class="tabContent" id="c0" style="display:block">
+
+  <span  class="tabCollapse" title="click me" onclick="expandDiv(this,'c1')">Color for Webpages</span>
+  <div   class="tabContent" id="c1" style="display:block">
+  <a href="https://SupaDupa999.github.io/Resources/ColorPallate.html">SupaDupa's own Color Support Page</a>
+  
+  <p>Internet sites with lots of colors to choose 
+  <br /><a href="https://coolors.co/">https://coolors.co/</a>
+  <br /><a href="https://colorhunt.co/">https://colorhunt.co/</a>
+  <br /><a href="https://colorpalettes.net/">https://colorpalettes.net/</a>
+  <br /><a href="https://www.canva.com/colors/color-palettes/">https://www.canva.com/colors/color-palettes/</a>
+  </div><br />
+
+</div><br />
 
 
 <!--
