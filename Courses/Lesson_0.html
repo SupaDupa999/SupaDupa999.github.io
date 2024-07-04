@@ -3,9 +3,51 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lesson_0</title>
+
+<!-- This is the basic style, giving the default background color, font size, and font color of the web page -->
+<style>
+body{@charset "utf-8";   background-color:#99BFA4;  font-size:normal;  color:black;}
+</style>
+
+<!-- This is style for fonts -->
+<style>
+.fs{font-size:small;}                                              /* small font size */
+.fR{color:#FF0000;}  .fRB{color:#FF0000; font-weight:bold;}        /* font color red, normal and bold */
+.fB{color:#6060A0;}  .fBB{color:#6060A0; font-weight:bold;}        /* font color blue (greyish), normal and bold, normal blus is used for links */
+.fM{color:#800000;}  .fMB{color:#800000; font-weight:bold;}        /* font color maroon, normal and bold */
+.fN{color:#000080;}  .fNB{color:#000080; font-weight:bold;}        /* font color navy, normal and bold  */
+.fG{color:#008000;}  .fGB{color:#008000; font-weight:bold;}        /* font color green (dark), normal and bold  */
+</style>
+
+<!-- This is style for any containers -->
+<style>
+.cnb { border: 1px solid black; padding: 2px; }                                                         /* normal size with border  */
+.cc {background-color:#E0E0E0; color:#000000;  padding:5px; font-size:18px;}                            /* commonly used large font no border */
+.ccb {background-color:#E0E0E0; color:#000000;  padding:5px; border:1px solid black; font-size:18px;}   /* commonly used large font with border */
+
+</style>
+
+<style>
+table.nb {  border-collapse: collapse;   margin:5px;  }                                         /* table with normal fonts and border  */
+table.st{font-size:small;}   table.stb{font-size:small;border-collapse: collapse; margin:5px;}  /* table with small fonts +/- border  */
+table.stb td,table.stb th,table.nb td,table.nb th { border: 2px solid black; padding: 2px; }    /* table elements with small fonts + border  */
+</style>
+
+<!--  special style used for making collapsible panels (boxes)  -->
+<style>
+.frme, .frme700, .frme650, .frme600, .frme500 {background-color : #E0E0E0;width:100%;} 
+.frme600{height:600px;}.frme700{height:700px;}.frme650{height:700px;}.frme500{height:500px;} 
+.rim { border-bottom: 1px solid #611800;} 
+.vtabOff{font-size:small;color : #E0E0E0;border-top : 1px solid #611800;border-left : 1px solid #611800;border-bottom : 1px solid #611800;background-color : #611800;} 
+.tabContent{background-color:#E0E0E0; color:#000000;  padding:5px; border:1px solid black; font-size:18px;} 
+.tabCollapse{color:#f0f0f0;  background-color:#611800; font-size:18px;} 
+</style> 
+
 </head>
 <body>
 <h2 align="center">Lesson 0: How to work with SupaDupa</h2>
+<div align="center"><table><tr><td align="left" class="tabContent">
+
 This lesson will take Harvey through all the procedures in navigating SupaDupa project
 <p>For each exercise, the supervisor (Dad or Grandpa) will
 <ul>
@@ -18,20 +60,20 @@ This lesson will take Harvey through all the procedures in navigating SupaDupa p
 <li>Navigate to the in box
 <li>Identify the latest email received
 <li>Identify an email from github
-<li>Read the mrssage and understand what the validation number is all ablut
+<li>Read the message and understand what the validation number is all ablut
 <li>Exit the email client
 </ol>
 
 <h3 align="center">Exercise 2: Navigate the computer files Using the File Explorer</h3>
 <ol>
-<li>From the computer, the File Explorer
-<li>Navigate to folder SipaDupaFiles
+<li>From the computer, activate the File Explorer
+<li>Navigate to folder <b>SupaDupaFiles</b>
 <li>Navigate to all subfolders
 <li>Identify the function of each folder
-<li>Find a named file, starting at disk, before any folder
+<li>Find a named file, starting at main folder of SupaDupaFiles
 </ol>
 
-<h3 align="center">Exercise 3: Navigate the Home page of SupaDupa999
+<h3 align="center">Exercise 3: Navigate the Home Page of SupaDupa999</h3>
 <ol>
 <li>Activate the browser
 <li>Reach SupaDupa home page
@@ -43,7 +85,7 @@ This lesson will take Harvey through all the procedures in navigating SupaDupa p
     <li>Description of project map
     </ul>
 </ol>
-<h3 align="center">Exercise 4: Sign in
+<h3 align="center">Exercise 4: Sign in</h3>
 <ol>
 <li>Switch on the email client
 <li>Go to SupaDupa999 home page
@@ -70,7 +112,7 @@ This lesson will take Harvey through all the procedures in navigating SupaDupa p
 </ol>
 
 
-<h3 align="center">Exercise 4: Navigate SupaDupa999
+<h3 align="center">Exercise 5: Navigate SupaDupa999</h3>
 From the sign in main page
 <ol>
 <li>Visit in turn all repositories and sub-repositories
@@ -82,17 +124,9 @@ From the sign in main page
 
 <p>If Harvey can repeat all these procedures without help, then he is ready to build a website
 <p><b>Next: </b>Exercise 1. To build the first web page, a log of what Harvey has learnt
+
+</td></tr></table></div>
+
 </body>
 </html>
-
-<!--
-This is the simplest html page possible containing
-- the html tags <html> and </html>
-    - everything in the web page should be between the html tahs
-- the header tags <head> and </head>
-    - instruction to the beowser on how to show the page are in the header section
-- the body tags <body> and </body>
-    - everything on show (content) are in the body
-- optionall but a good idea, the title tag <title></title>
-    - title is what is shown on the tab at top of browser when the page is loaded
 -->
