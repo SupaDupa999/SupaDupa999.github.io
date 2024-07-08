@@ -1,0 +1,263 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SD999 Home</title>
+
+<!-- This is the basic style, giving the default background color, font size, and font color of the web page -->
+<style>
+/* Body */
+body{@charset "utf-8";   background-color:LightGray;  font-size:100%;  color:black;}
+
+/* Fonts */
+.fs{font-size:small;}                                              /* small font size */
+.fR{color:red;}  .fRB{color:red; font-weight:bold;}        /* font color red, 100% and bold */
+.fB{color:MidnightBlue;}  .fBB{colorMidnightBlue; font-weight:bold;}        /* font color blue (greyish), 100% and bold, 100% blus is used for links */
+.fM{color:Maroon;}  .fMB{color:Maroon; font-weight:bold;}        /* font color maroon, 100% and bold */
+.fG{color:MediumSeaGreen;}  .fGB{color:#MediumSeaGreen; font-weight:bold;}        /* font color green (dark), 100% and bold  */
+
+/* Tables */
+table.nb {  border-collapse: collapse;   margin:5px;  }                                         /* table with 100% fonts and border  */
+
+table.st{font-size:small;}   table.stb{font-size:small;border-collapse: collapse; margin:5px;}  /* table with small fonts +/- border  */
+table.stb td,table.stb th,table.nb td,table.nb th { border: 2px solid black; padding: 2px; }    /* table elements with small fonts + border  */
+
+/*  Containers */
+.cC{background-color:OldLace; color:Purple;  padding:5px; border:1px solid black; font-size:110%;}   /* container  for contents */ 
+.cL{color:OldLace;  background-color:Purple; font-size:110%;}                                        /* containers for labels */
+
+</style>
+
+
+<script>
+<!--
+//            Javascript program controlling collapsible panels
+
+cStart = "a";
+cFinish = "z";
+nStart = "0";
+nFinish = 75;
+function expandDiv(curobj,which){trig=document.getElementById(which).style.display;if(trig=="block"){trig="none";}else if(trig=="" || trig=="none"){trig="block";}  document.getElementById(which).style.display=trig;}
+function DivExists(id){if(!!document.getElementById(id)) return 1;  return 0;}
+function ChangeShowEach(id, displayType){if(DivExists(id)==1) document.getElementById(id).style.display = displayType;}
+function ChangeShowAll(displayType){for(i=cStart.charCodeAt(0); i<= cFinish.charCodeAt(0);i++){c = String.fromCharCode(i);for(j=nStart; j<=nFinish;j++){id = `${c}${j}`;ChangeShowEach(id, displayType)}}}
+function DoShow(){ChangeShowAll("block");}
+function DoHide(){ChangeShowAll("none");}
+function ChangeShow(onAr){DoHide(); for(i=0;i<onAr.length;i++) ChangeShowEach(onAr[i], "block");}
+/*
+function ShowLogin(){onAr = ["a0","a1"];ChangeShow(onAr);}
+function ShowFileProc(){onAr = ["a0","a3","a31","a32","a33","a34","a35","a36","a37"];ChangeShow(onAr);}
+function ShowRepositories(){onAr = ["a0","a2","a21","a22"];ChangeShow(onAr);}
+function ShowSiteStructure(){onAr = ["b0"];ChangeShow(onAr);}
+function ShowShowTrainingCourse(){onAr = ["d0","d1"];ChangeShow(onAr);}
+*/
+-->
+</script>
+
+
+</head>
+<body>
+<table align="center">
+<tr><td colspan="2"><h2 align="center">SupaDupa999 Home Page</h2></td></tr>
+<tr><td class="cC">
+Discussions in <b>black</b>
+<br /><span class="fM">Procedures in <b>Maroon</b></span>
+<br /><span class="fB">Explanations in <b>Navy</b></span>
+<br /><span class="fR">Emphasis in <b>Red</b></span><br />
+
+<br />Click on colored tab to show or hide contents<br />
+Click on buttons to show selected contents<br />
+<input type="button" value="Show All"  onclick="DoShow()">
+<input type="button" value="Hide All"  onclick="DoHide()">
+<!--
+<br />
+<input type="button" value="Show Login/Logout"  onclick="ShowLogin()">
+<input type="button" value="Show File Procedures"  onclick="ShowFileProc()">
+<input type="button" value="Show Site Structure"  onclick="ShowSiteStructure()">
+<input type="button" value="Show Repositories"  onclick="ShowRepositories()">
+<input type="button" value="Show Training Course"  onclick="ShowTrainingCourse()">
+-->
+</td>
+</td><td><img src="SupsDupa999Logo.png" width="200px"></td>
+</tr></table>
+
+
+
+<div align="center"><table><tr><td align="left" class="cC">
+
+<span  class="cL" title="click me" onclick="expandDiv(this,'b0')">Introduction</span>
+<div   class="cC" id="b0" style="display:block">
+This is the HomePage for SupaDupa999
+</div><br />
+
+<span  class="cL" title="click me" onclick="expandDiv(this,'a0')">How to Do Things on Github</span>
+<div   class="cC" id="a0" style="display:block">
+  <span  class="cL" title="click me" onclick="expandDiv(this,'a1')">Sign in and Sign out</span>
+  <div   class="cC" id="a1" style="display:none">
+  <h3 align="center">To Sign In</h3>
+  At the browser
+  <ol class="fM">
+  <li><a href="https://github.com/SupaDupa999">Click here</a> to go to SupaDupa999
+  <li>If there is no Sign in button at top right of page
+      <br />then you are already signed in
+  <li>Click <b>Sign in</b> button
+  <li>At the sign in box
+        <ol>
+        <li>Enter Harvey@amchang.net in the email box
+        <li>Enter 569s6gpqhy2eesh in the password box
+        <li>You can use the clipboard to copy and paste 
+        <li>Click <b>Sign in</b>
+        </ol>
+   <li>In most cases, you will be signed in at this point. Sometime however,
+        <ul class="fM">
+        <li>Github will email an authentification number to harvey@amchang.net
+        <li>You will need to read that email and put the number into the required box on the browser
+        <br /><span class="fR">This is why you must have access to your email at signed in</span>
+        </ul> 
+   <li>You should now be signed in, and at the Main page 
+   </ol>
+
+  <h3 align="center">To Sign Out</h3>
+  At the main page
+  <ol class="fM">
+  <li>Click on small account acon top right corner of page
+  <li>Scroll down to bottom of drop down list
+  <li>Click <b>Sign Out</b>
+  </ol>
+  </div><br />
+
+  <span  class="cL" title="click me" onclick="expandDiv(this,'a2')">Repositories</span>
+  <div   class="cC" id="a2" style="display:none">
+    <b>To navigate from the main page after signed in</b>
+    <ol class="fM">
+    <li>The repositories are boxes with names in them
+    <li>Click on the name of repository
+    </ol>
+    <b>To navigate from some repository to another</b>
+    <ol class="fM">
+    <li>On top of the page is the current repository name
+    <li>Click on the name of the root repository
+    <li>At the root repository click name of new repository
+    </ol>
+  </div><br />
+
+  <span  class="cL" title="click me" onclick="expandDiv(this,'a3')">Files</span>
+  <div   class="cC" id="a3" style="display:none">
+    <h3 align="center">Uploading a File From computer to Github</h3>
+    <b>At the repository</b>
+    <ol class="fM">
+    <li>Click on the <b>+ button</b>, then click on <b>Upload a file</b>
+    <li>Search file on the <b>File Search panel</b> that appears
+    <li>Mark the file then click <b>Open</b>
+    <li>When file loaded, click <b>Commit Change</b>
+    </ol>
+
+    <h3 align="center">Downloading a File from Github to Computer</h3>
+    <b>At the repository</b>
+    <ol class="fM">
+    <li>Click on the name of the file to download
+    <li>Click on the <b>raw</b> button <span class="fB">(button with 3 dots near top right of page</span>
+    <li>Click <b>Download File</b>
+    </ol>
+    <span class="fB">Depending on browser setting, the file will be downloaded 
+        <br />either to the <b>Download</b> folder of your computer
+        <br />or a download search panel will appear, <br />allow you to direct which folder to receive the file</span>
+
+    <h3 align="center">Edit a File</h3>
+    <b>At the repository holding the file</b>
+    <ol class="fM">
+    <li>Click on the file name to show file
+    <li>Click on the icon with the pencil (above and to the right of file listing)
+    <li>In the editing panel, change the file as required
+    <li>In the filename box, change the file name as required
+    <li>When editing finished, click the <b>Commit Changes</b> button
+    </ol> 
+    <span class="fB">
+    If the file is a webpage in the io repository, Call the page on a browser to check results
+    <br /><b>Please Note: </b> After editing the new page does not appear on www until after 20-40 seconds</span> 
+
+    <h3 align="center">Copy a File</h3>
+    <ol class="fM">
+    <li>Download the file to a temporary folder on your computer
+    <li>Rename (by Edit) the exiting file name to the new one
+    <li>Upload the original file from the temporary folder back
+    <li>In the computer and using file Explorer, delete the temporary file
+    </ol>
+
+    <h3 align="center">Move a File to Another Repository</h3>
+    <ol class="fM">
+    <li>Download the file to a temporary folder on your computer
+    <li>Upload the file back to another repository
+    <li>Delete the original file
+    <li>In the computer and using file Explorer, delete the temporary file
+    </ol>
+
+    <h3 align="center">Create a New File in a Repository</h3>
+    <b>Method 1. By Coding</b> 
+    <ol class="fM">
+    <li>Click on the <b>+ button</b>, then select <b>Create a New File</b>
+    <li>Enter the contents of the page
+    <li>Enter the name of the page
+    <li>Click <b>Commit Change</b> button
+    </ol>
+    <b>Method 2. Using a Template</b>
+    <ol class="fM">
+    <li>Use a template file in the repository or upload a template from your computer
+    <li>Edit the template file
+        <ul>
+        <li>Change the contents
+        <li>Change the file name
+        </ul>
+    <li>Click <b>Commit Change</b> button
+    </ol>
+    <b>Method 3. Copying another web page</b>
+    <ol class="fM">
+    <li>Get the <b>source code</b>
+        <ol>
+        <li>Obtain the <b>back end</b>
+            <br>On the browser menu go to <b>Tools->Browser Tools->Page-Source</b>
+            <br />The back end should appear in another tab
+        <li>Mark and coly the whole back end to the clipboard (ctrl+c) 
+        </ol>
+    <li>At the respository, click on the <b>+ button</b>, then select <b>Create a New File</b>
+    <li>Paste content of clipboard to the new file (ctrl+v) 
+    <li>Enter name for the new file
+    <li>Click <b>Commit Change</b> button
+    </ol>
+
+    <h3 align="center">Delete a File from a Repository</h3>
+    <ol class="fM">
+    <li>Click on the file name
+    <li>Click on the icon with 3 dots at top right corner of page
+    <li>Select <b>Delete File</b>
+    <li>Click <b>Commit Changes</b> (twice in different places on page)
+    </ol> 
+    <span class="fR"><b>Note: </b>a deleted file, along with its editing history, cannot be recovered</span>
+
+    <h3 align="center">Clean a File's edit history</h3>
+    Github keeps a history of changes to a file since its creation.  
+    <br />This makes the file size large and contents confusing
+    <br /><br />When a file is finalized
+    <br />Its a good idea to remove the editing history
+    <br /><br />To do so
+    <ol class="fM">
+    <li>Download the file to the temporary folder in the computer
+    <span class="fB"><br />Only the file code is downloaded, not the history</span>
+    <li>Delete the file in the repository
+    <span class="fB"><br />The history will also be deleted
+    <li>Upload the original file from temporary folder to the repository
+    <span class="fB"><br />The file is back, but history gone
+    </ol> 
+ </div><br />
+</div><br />
+
+
+<!--
+<span  class="cL" title="click me" onclick="expandDiv(this,'z0')">z0</span>
+<div   class="cC" id="z0" style="display:block">
+
+</div><br />
+-->
+</td></tr></table></div>
+</body>
+</html>
