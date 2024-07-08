@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SupaDupaHome</title>
+<title>SupaDupaNinja</title>
 
 <!-- This is the basic style, giving the default background color, font size, and font color of the web page -->
 <style>
@@ -29,68 +29,79 @@ table.stb td,table.stb th,table.nb td,table.nb th { border: 2px solid black; pad
 </style>
 
 
-<script>
-<!--
-//            Javascript program controlling collapsible panels
-
-cStart = "a";
-cFinish = "z";
-nStart = "0";
-nFinish = 75;
-function expandDiv(curobj,which){trig=document.getElementById(which).style.display;if(trig=="block"){trig="none";}else if(trig=="" || trig=="none"){trig="block";}  document.getElementById(which).style.display=trig;}
-function DivExists(id){if(!!document.getElementById(id)) return 1;  return 0;}
-function ChangeShowEach(id, displayType){if(DivExists(id)==1) document.getElementById(id).style.display = displayType;}
-function ChangeShowAll(displayType){for(i=cStart.charCodeAt(0); i<= cFinish.charCodeAt(0);i++){c = String.fromCharCode(i);for(j=nStart; j<=nFinish;j++){id = `${c}${j}`;ChangeShowEach(id, displayType)}}}
-function DoShow(){ChangeShowAll("block");}
-function DoHide(){ChangeShowAll("none");}
-function ChangeShow(onAr){DoHide(); for(i=0;i<onAr.length;i++) ChangeShowEach(onAr[i], "block");}
-/*
-function ShowLogin(){onAr = ["a0","a1"];ChangeShow(onAr);}
-function ShowFileProc(){onAr = ["a0","a3","a31","a32","a33","a34","a35","a36","a37"];ChangeShow(onAr);}
-function ShowRepositories(){onAr = ["a0","a2","a21","a22"];ChangeShow(onAr);}
-function ShowSiteStructure(){onAr = ["b0"];ChangeShow(onAr);}
-function ShowShowTrainingCourse(){onAr = ["d0","d1"];ChangeShow(onAr);}
-*/
--->
-</script>
-
-
 </head>
 <body>
-<table align="center">
-<tr><td colspan="2"><h2 align="center">SupaDupa999 Home Page</h2></td></tr>
-<tr><td class="cC">
-
-<span class="fP">Discussions in <b>Purple</b></span>
-<br /><span class="fM">Procedures in <b>Maroon</b></span>
-<br /><span class="fB">Explanations in <b>Navy</b></span>
-<br /><span class="fR">Emphasis in <b>Red</b></span><br />
-
-<br />Click on colored tab to show or hide contents<br />
-Click on buttons to show selected contents<br />
-<input type="button" value="Show All"  onclick="DoShow()">
-<input type="button" value="Hide All"  onclick="DoHide()">
-<!--
-<br />
-<input type="button" value="Show Login/Logout"  onclick="ShowLogin()">
-<input type="button" value="Show File Procedures"  onclick="ShowFileProc()">
-<input type="button" value="Show Site Structure"  onclick="ShowSiteStructure()">
-<input type="button" value="Show Repositories"  onclick="ShowRepositories()">
-<input type="button" value="Show Training Course"  onclick="ShowTrainingCourse()">
--->
-</td>
-</td><td><img src="SupsDupa999Logo.png" width="200px"></td>
-</tr></table>
-
-
-
+<h2 align="center">SupaDupaNinja for SupaDupa999</h3>
 <div align="center"><table><tr><td align="left" class="cC">
+<div   class="cC" id="b0" style="display:block;">
+<p align="center" style="font-size:200%">
+I am SupaDupaNinja<br />
+My alias is <b>To Be Decided</b><br />
+<img src="SupsDupa999Logo.png" width="400px"><br />
+This is my Avatar
+</p>
+<p>To be a <b>SupaDupaNinja</b>, I promised
+<ul>
+<li>I will write the best webpage that I can
+    <ul> 
+    <li>I will always make it neat and pretty
+    <li>I will always fix up any mistakes
+    <li>If I am not sure, I will always ask Mum and Dad
+    </ul>
+<li>I will only do SupaDupa
+    <ul> 
+    <li>After asking mum and Dad
+    <li>After finishing my homeworks
+    <li>After doing what Mum and Dad asked me to do
+    <li>Only as long as Mum and Dad said so
+    </ul>
+<li>I will keep everyone safe
+    <ul>
+    <li>I will not put my name or photograph on this website
+    <li>I will always ask permission before <br />
+        putting anyone else's name or photograph on this website
+    <li>If I copy any one elses's stuff<br />
+        I will always say so on this website
+    <li>I will never hurt anyone with what I put on this website
+    <li>I will never say anything bad or horrible about anyone<br />
+        or anything on this website
+    </ul>
+<li>I will keep this website safe
+    <ul>
+    <li>On this website
+        <ul>
+        My alias is what I am called
+        My avatar is what I look like
+        </ul>
+    <li>I will not tell anyone my secret passwords (except mum and Dad)
+    <li>I will not let anyone else program on my website (except Mum and Dad)
+    <li>If anyone (even my best friend) asked me to do something on the website<br />
+        I will ask Mum and Dad first
+    </ul>
+</ul>
+SupaDupaNinja have different levels
+<ul>
+<li>0: Knows nothing
+<li>1: <span class="fR">Good enough to try<b> I am here</b></span>
+<li>2: Can write a web page
+<li>3: Can organize things on the web page
+<li>4: Can do nearly everything on the web page
+<li>5: Can write programs on a web page
+<li>6: <span class="fR">Can help somebody to make a SupaDupa web site<b> Grandpa is here</b></span>
+<li>7: <span class="fR">Can get a job or make money doing web sites<b> Chris is here</b></span>
+</ul>
+</div>
 
-<span  class="cL" title="click me" onclick="expandDiv(this,'b0')">Introduction</span>
-<div   class="cC" id="b0" style="display:block">
-This is the HomePage for SupaDupa999
-<p><a href="SupaDupaNinja.html">About Site Master</b>
-</div><br />
+
+
+
+
+
+
+
+
+
+<div style="display:none;">
 
 <span  class="cL" title="click me" onclick="expandDiv(this,'a0')">How to Do Things on Github</span>
 <div   class="cC" id="a0" style="display:block">
@@ -118,6 +129,12 @@ This is the HomePage for SupaDupa999
         </ul> 
    <li>You should now be signed in, and at the Main page 
    </ol>
+   </div>
+
+
+
+
+
 
   <h3 align="center">To Sign Out</h3>
   At the main page
@@ -260,6 +277,9 @@ This is the HomePage for SupaDupa999
 
 </div><br />
 -->
+</div>
+
+
 </td></tr></table></div>
 </body>
 </html>
